@@ -1,0 +1,10 @@
+node_modules
+
+/controller/aboutontroller.js
+
+/views/index2.ejs
+/views/about.ejs
+
+/config/.env
+
+

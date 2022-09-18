@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+    <%- include('./partials/_header') %>
+  <body>
+       <%- include('./partials/_nav') %>
+    <div class="container" id="id-container">
+           <h1 class="" style="text-align: center; font-weight: 400;padding-top: 20px; letter-spacing: 0.1em; font-style: inherit;">Please choose category to continue</h1>
+        <div class="row  register">
+          <div class="col-md-6">
+            <div class="card" style="width: 18em;height:20em; margin-left: auto;margin-top: 150px;margin-right: 100px; padding-bottom: 20px;">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <img id="user" src="images/images.png" alt="">
+                    <span  class="user-info">USER</span>
+                    <a id="userid" href="#user" class="btn btn-primary user-info">Get started</a>
+                </div>
+             </div>
+           </div>
+          <div class="col-md-6">
+            <div class="card" style="width: 18em;height:20em; margin-top: 150px; padding-bottom: 20px;">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <img id="agent" src="images/agent.jpeg" alt="">
+                    <span class="user-info">AGENT</span>
+                    <a href="#agent" class="btn btn-primary user-info">Get started</a>
+                </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="user-registration" class="ftco-section contact-section bg-light" style="display: none;">
+ 
+    </div>
+    <%- include('./partials/_footer') %>
+
+    <script>
+        $(document).ready(function(){
+            $("#userid").click(function(e){
+                document.getElementById('id-container').style.display = 'none'
+                document.getElementById('user-registration').style.display = 'block'
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+
+p{
+    margin: 10px 0 !important;
+    font-size: 20px;
+}
+
+.login-container{
+    width: 400px;
+    margin: 50px;
+    text-align: center;
+}
+
+h1{
+    font-size: 20px;
+    font-weight: 300
+}
