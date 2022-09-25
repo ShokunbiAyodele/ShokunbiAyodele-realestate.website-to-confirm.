@@ -9437,11 +9437,27 @@ textarea.form-control {
       height: 200px;
     }
 
- 
-
   .container > text-page{
     font-size: 10px;
   }
+
+  .container-img{
+    background-image: url('../images/container-image.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .center-form-element{
+    margin: 50px;
+
+  }
+
+  .container-agent-img{
+    background-image: url('../images/real-estate.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  
     /* .container section + section{
       width: 100px;
       margin: 10px;
@@ -9453,3 +9469,77 @@ textarea.form-control {
     div.parent{
       clear: both;
     }
+
+
+    .package{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+    }
+    li > p{
+      padding-top: 10px;
+      text-transform: capitalize;
+      word-spacing: 0.5em;
+    }
+
+    .form{
+      border-bottom: 100px;
+    }
+    #span{
+      text-align: justify;
+    }
+
+    div.form-group{
+      font-size: 15px;
+    }
+
+
+.selection {
+  float: left;
+  margin: 0 5px 0 0;
+  width: 100px;
+  height: 40px;
+  position: relative;
+}
+
+.selection label,
+.selection input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.selection input[type="radio"] {
+  opacity: 0.011;
+  z-index: 100;
+}
+
+.selection input[type="radio"]:checked + label {
+  background: #20b8be;
+  border-radius: 10px;
+  margin: 0 5px 0 auto;
+}
+
+.selection label {
+  cursor: pointer;
+  z-index: 90;
+  line-height: 1.8em;
+}
+
+.selection > input{
+  margin: 30px;
+}
+
+.create-account{
+  margin-top: 100px;
+
+}
+
+.create-account > input{
+  text-transform: capitalize;
+  background: #20b8be;
+}

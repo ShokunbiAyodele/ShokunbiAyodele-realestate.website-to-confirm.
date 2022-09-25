@@ -4,6 +4,8 @@ node_modules
 
 /views/index2.ejs
 /views/about.ejs
+/views/signup.ejs
+
 
 /config/.env
 

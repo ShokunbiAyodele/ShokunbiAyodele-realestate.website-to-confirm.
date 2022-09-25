@@ -22,25 +22,80 @@
                     <h5 class="card-title"></h5>
                     <img id="agent" src="images/agent.jpeg" alt="">
                     <span class="user-info">AGENT</span>
-                    <a href="#agent" class="btn btn-primary user-info">Get started</a>
+                    <a href="#agent" id="agentid" class="btn btn-primary user-info">Get started</a>
                 </div> 
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="container" id="user-registration" class="ftco-section contact-section bg-light" style="display: none;">
- 
+    <div class="container" id="user-registration" style="display: none;margin: 0px;">
+      <div class="heading-section heading-section-wo-line mb-5 pl-md-5" style="margin-left: 0px;">
+        <div class="pl-md-5 ml-md-5">
+          <!-- <span class="subheading">Company Overview</span> -->
+          <h2 class="m-4" style="letter-spacing: 0.1em; color:blanchedalmond; font-weight: 600;">Welcome User</h2>
+        </div>
+      </div>
+      <div class="row no-gutters flex text-justify" style="margin: 100px 0px;">
+        <div class="col-md-7 wrap-about pb-md-5 p-5 ftco-animate fadeInUp ftco-animated">
+          <div class="pl-md-5 ml-md-5 ">
+            <p style="font-size: 20px;">Connect with more than 100,000 agent to welcome your dream home at your finger tips</p>
+            <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+            <a href="/signup?type=user" class="btn btn-primary btn-block">Sign Up</a>
+          </div>
+        </div>
+        <div class="col-md-5 p-md-5 img img-2 d-flex justify-content-end" style="background-image: url(images/about.jpg); margin-left:auto;">
+          <!-- <a href="https://vimeo.com/45830194" class="icon popup-vimeo d-flex justify-content-center align-items-center"> -->
+            <span class="icon-play"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="agent-registration" style="display: none;margin: 0px;">
+      <div class="heading-section heading-section-wo-line mb-5 pl-md-5" style="margin-left: 0px;">
+        <div class="pl-md-5 ml-md-5">
+          <!-- <span class="subheading">Company Overview</span> -->
+          <h2 class="m-4" style="letter-spacing: 0.1em; color:grey; font-weight: 600;">Sign up as agent to continue...</h2>
+        </div>
+      </div>
+      <div class="row no-gutters flex text-justify" style="margin: 100px 0px;">
+        <div class="col-md-7 wrap-about pb-md-5 p-5 ftco-animate fadeInUp ftco-animated">
+          <ul class="pl-md-5 ml-md-5 package">
+            <li>lease</li>
+            <li>Rent</li>
+            <li>Buy/sell</li>
+            <li> <p>we are initiator</p></li>
+          </ul>
+         
+          <div class="pl-md-5 ml-md-5 ">
+            <p style="font-size: 20px;">Connect with more than 100,000 people worldwide who find pleasure in doing property business</p>
+            <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+            <a href="/signup?type=agent" class="btn btn-primary btn-block">Sign Up</a>
+          </div>
+        </div>
+        <div class="col-md-5 p-md-5 img img-2 d-flex justify-content-end" style="background-image: url(images/about.jpg); margin-left:auto;">
+          <!-- <a href="https://vimeo.com/45830194" class="icon popup-vimeo d-flex justify-content-center align-items-center"> -->
+            <span class="icon-play"></span>
+          </a>
+        </div>
+      </div>
     </div>
     <%- include('./partials/_footer') %>
 
     <script>
-        $(document).ready(function(){
-            $("#userid").click(function(e){
-                document.getElementById('id-container').style.display = 'none'
-                document.getElementById('user-registration').style.display = 'block'
-            })
-        })
-    </script>
+      $(document).ready(function(){
+          $("#userid").click(function(e){
+              document.getElementById('id-container').style.display = 'none'
+              document.getElementById('user-registration').style.display = 'block'
+          });
+
+          $("#agentid").click(function(e){
+              document.getElementById('id-container').style.display = 'none'
+              document.getElementById('agent-registration').style.display = 'block'
+          })
+
+
+      })
+  </script>
 </body>
 </html>

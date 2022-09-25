@@ -1,3 +1,22 @@
+///check controller for signupController.js thst does the work for agent and user sign up.
+// check createUser function
+
+
+// i have helper/helper.js  where i write a function to validate mobile number and this is been called in signupController::createUser()
+
+
+//routes is where signup agent and user 
+
+
+//lastly:  routes/userProfile.js is the one handling the userProfile to controller/userProfile.js 
+
+//views contains the user and agent files and also 
+// views/user/profile.ejs handles the user dashboard
+
+
+//@created by Abdulafatah
+
+
 const express = require('express')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
@@ -10,10 +29,10 @@ const session  = require('express-session')
 const MongoStore = require('connect-mongo')
 
 //routes
-const Loginpage = require('./routes/login')
+const userdashboardLogin = require('./routes/login')
 const signupPage  =require('./routes/signup')
 const googleAuthentication = require('./routes/auth')
-const dashboard = require('./routes/login')
+const userProfile = require('./routes/userProfile')
 
 
 
@@ -58,16 +77,13 @@ app.use(passport.session())
 
 
 
-app.use('/', Loginpage)
-app.use('/',dashboard)
+app.use('/', userdashboardLogin)
 app.use('/', signupPage)
+app.use('/', userProfile)
 app.use('/auth', googleAuthentication)
 app.use('/', require('./routes/index'))
 app.use('/about', require('./routes/about'))
 app.use('/logout', require('./routes/auth'))
-
-
-
 
 
 app.listen(PORT,()=>{

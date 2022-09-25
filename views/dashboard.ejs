@@ -19,6 +19,11 @@
           </div>
         </div>
       </div>
+      <% if (locals.messages.success) { %>
+        <% messages.success.forEach( el => { %>
+            <div class="alert alert-success"><%= el.msg %></div>
+        <% }) %>    
+    <%} %>
       <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
           <a class="navbar-brand" href="index.html">Royal<span>estate</span></a>
@@ -35,7 +40,7 @@
               <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
               <%  if(user){%>
               <li class="nav-item"><a href="/dashboard" class="nav-link">Welcome : <%-user.displayName %></a></li>
-              <li class="nav-item cta cta-colored"><a href="/prifile" title="go to your profile" class="nav-link"><span class="icon-dashboard"></span>Dashboard</a></li>
+              <li class="nav-item cta cta-colored"><a href="/profile/<%- user._id %>" title="go to your profile" class="nav-link"><span class="icon-dashboard"></span> Dashboard</a></li>
               <li class="nav-item cta cta-colored"><a href="/logout" class="nav-link"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
                <% }else{%>
                 <li class="nav-item cta"><button type="button" class="btn btn-primary nav-link" data-toggle="modal" data-target="#exampleModalCenter"><span class="icon-user"></span>

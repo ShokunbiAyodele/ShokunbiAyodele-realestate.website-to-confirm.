@@ -7,9 +7,11 @@ const UserSchema = new mongoose.Schema({
   displayName:{type: String,require : true},
   firstName:  {type: String,require : true},
   lastName:   {type: String,require : true},
+  phoneNumber:   {type: Number,unique: true},
   createdAt:  {type: Date,default: Date.now},
-  acountId:{type: String},
-  password :String,
+  acountId:   {type: String},
+  usertype:   {type: String},
+  password:String,
 })
 
 UserSchema.pre('save', function save(next) {
