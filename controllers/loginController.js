@@ -61,5 +61,4 @@ exports.logoutUser = (req, res) => {
     })
   })
   
-
 }

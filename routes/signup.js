@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/register',ensureGuest,controllers.registerUser)
 router.get('/signup',ensureGuest,controllers.signUpPage)
-// router.get('/signup',ensureGuest,controllers.signup)
+
 router.post('/signup',ensureGuest,controllers.createUser)
 
 module.exports = router;

@@ -21683,11 +21683,11 @@ label,
 }
 
 .bg-gradient-info {
-  background-image: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%);
+  background-image: linear-gradient(310deg, #343a40 0%, #343a40 100%);
 }
 
 .bg-gradient-warning {
-  background-image: linear-gradient(310deg, #f53939 0%, #fbcf33 100%);
+  background-image: linear-gradient(#343a40, #f53939 0%, #fbcf33 100%);
 }
 
 .bg-gradient-danger {
@@ -24908,7 +24908,7 @@ p {
 }
 
 .text-gradient.text-info {
-  background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+  background-image: linear-gradient(310deg, #171b20, #21D4FD);
 }
 
 .text-gradient.text-success {
@@ -26606,3 +26606,37 @@ pre[class*="language-"] {
 }
 
 /*# sourceMappingURL=dashboard-free.css.map */
+
+
+/* .inner {
+  width: 300px;
+  margin-left: 20px;
+  height: 70px;
+}
+
+div span{
+  display: inline-block;
+} */
+
+
+.header-list > ul{
+  text-align: center;
+}
+
+ul > li{
+  display: inline;
+
+}
+
+
+ul > li{
+  background-color: white;
+
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

@@ -46,12 +46,11 @@ exports.registerUser = (req,res)=> {
         if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long'})
         if (req.body.password !== req.body.confirmPassword) validationErrors.push({ msg: 'Passwords do not match' })
 
-         if (validationErrors.length) {
-          req.flash('errors', validationErrors)
-          if(usertype==='user'){ return res.redirect('../signup?type=user')}
-          else{ return res.redirect('../signup?type=agent')}
-         
-        }
+        
+        if (validationErrors.length) {
+            req.flash('errors', validationErrors)
+            return res.redirect('../')
+          }
         req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
 
         // //generate a user id
@@ -65,6 +64,7 @@ exports.registerUser = (req,res)=> {
                 phoneNumber : savephoneNumber,
                 displayName : req.body.firstName + ' ' + req.body.middleName,
                 firstName: req.body.firstName,
+                passwordResetToken: 'default',
                 lastName: req.body.lastName,
                 email: req.body.email,
                 password: req.body.password

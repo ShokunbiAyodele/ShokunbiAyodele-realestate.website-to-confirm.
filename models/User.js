@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require("bcrypt")
 
+
 const UserSchema = new mongoose.Schema({
   email:{type: String, unique:true},
   usernameField:{type: String,unique: true},
@@ -8,6 +9,7 @@ const UserSchema = new mongoose.Schema({
   firstName:  {type: String,require : true},
   lastName:   {type: String,require : true},
   phoneNumber:   {type: Number,unique: true},
+  passwordResetToken:{type: String},
   createdAt:  {type: Date,default: Date.now},
   acountId:   {type: String},
   usertype:   {type: String},
