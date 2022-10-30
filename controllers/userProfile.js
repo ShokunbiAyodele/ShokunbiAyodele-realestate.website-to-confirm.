@@ -16,6 +16,10 @@ exports.userPofile = async(req,res)=>{
     } catch (error) {
         console.log(error)
     }
- 
-    
+}
+
+exports.addpost = async(req,res)=>{    
+    const user_id = req.params.id       
+        if(req.user){res.render('user/addpost.ejs',{userProfle : req.user})
+        }
 }

@@ -6,6 +6,7 @@ const router = express.Router()
 
 
 router.get('/profile/:id',ensureAuth,controllers.userPofile)
+router.get('/addpost/:id',ensureAuth,controllers.addpost)
 
 
 module.exports = router;

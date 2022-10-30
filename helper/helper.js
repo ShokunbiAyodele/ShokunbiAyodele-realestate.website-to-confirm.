@@ -37,7 +37,7 @@ module.exports  = {
 
 //transporter to send a reset password mail to user
  transporter : nodemailer.createTransport({
-  service: "gmail",
+  host: process.env.SMTP_HOST,
   port : process.env.PORT || 3000,
   auth: {
     user: process.env.EMAIL_LOGIN,
