@@ -4,12 +4,13 @@ const Post = require("../models/Post");
 
 
 module.exports = {
-    addlandProperty: async (req, res) => {
+  addProperty: async (req, res) => {
 try {
+
     var imageUrlList = []
     for(var i=0;i<req.files.length;i++){
       var locaFilePath = req.files[i].path
-      var result = await uploadToCloudinary(locaFilePath)
+      var result = await uploadToCloudinary(locaFilePath,'post_urls')
     //   console.log(result.secure_url)
       imageUrlList.push(result.secure_url)
     }
@@ -49,7 +50,7 @@ try {
     await Post.create({
         title: req.body.title,
         image_url: imageUrlList,
-        location: req.body.location,
+        purpose: req.body.purpose,
         propertyType: req.body.propertyType,
         subType: req.body.subType,
         numberOfBedrooms: req.body.numberOfBedrooms,
@@ -62,6 +63,7 @@ try {
         stateName : req.body.stateName,
         LocalityName : req.body.LocalityName,
         selectAreaName : selectAreaName,
+        areaType : req.body.areaType,
         price: PropertyPrice + "/"+ req.body.appendTo,
         installment : req.body.installment,
         initialAmount : initialAmount,
@@ -75,7 +77,7 @@ try {
       });
       console.log("Post has been added!");
       req.flash('errors', {msg :"Adds has been created successfully"})
-      res.redirect("/profile/"+ req.user.id);
+      res.redirect("/userDashboard/"+ req.user.id);
       }catch (error) {
     console.log(error)
 

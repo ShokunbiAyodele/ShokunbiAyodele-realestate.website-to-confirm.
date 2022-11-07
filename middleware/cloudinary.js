@@ -11,11 +11,11 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 
- const uploadToCloudinary = async(locaFilePath) => {
+ const uploadToCloudinary = async(locaFilePath,cloudFilePath) => {
     // locaFilePath :
     // path of image which was just uploaded to "uploads" folder
   
-    var mainFolderName = "main"
+    var mainFolderName = cloudFilePath
     // filePathOnCloudinary :
     // path of image we want when it is uploded to cloudinary
     var filePathOnCloudinary = mainFolderName + "/" + locaFilePath

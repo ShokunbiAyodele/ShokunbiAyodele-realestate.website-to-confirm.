@@ -8,7 +8,7 @@ const PostSchema = new mongoose.Schema({
   image_url: {
     type: [],
   },
-  location: {
+  purpose: {
     type: String,
     required: true,
   },
@@ -80,14 +80,11 @@ const PostSchema = new mongoose.Schema({
   },
   periodOfPayment: {
     type: String,
-    required: true,
   },
   youtube_video_link: {
-    type: String,
   },
   instagram_video_link: {
     type: String,
-    required: true,
   },
   likes: {
     type: Number,

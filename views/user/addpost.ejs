@@ -38,10 +38,7 @@
    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
    
 
-   <!-- dropify cdn -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
-   <link rel="stylesheet" type="text/css" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
 
 
 
@@ -209,9 +206,14 @@
                                     <input type="text" class="form-control" name="title" id="title" placeholder="E.g Newly Build Four Bedroom Duplex in a Serene Neighbourhood" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                  <label for="location">Location</label>
-                                  <input type="text" class="form-control" name="location" id="location" placeholder="e.g Lagos/ijebu ode Ogun/ifo" required>
-                                 </div>
+                                  <label for="purPose">Purpose</label>
+                                    <select  name="purpose" id="purpose"  class="form-control" required>
+                                      <option value="">--select--</option>
+                                      <option value="Rent">For Rent</option>
+                                      <option value="Sale">For Sale</option>
+                                      <option value="Short">Short Let</option>
+                                  </select>
+                                </div>
                                   <div class="form-group col-md-4">
                                     <label for="propertty_type">Types of Property</label>
                                     <select  name="propertyType" id="propertyType"  class="form-control" required>
@@ -268,16 +270,16 @@
                                 <label for="number_of_toilets">Toilets</label>
                                 <select  name="numberOfToilets" id="numberOfToilets"  class="form-control" required>
                                   <option value="" id="">--select--</option>
-                                  <option value="" id="1">1</option>
-                                  <option value="" id="2">2</option>
-                                  <option value="" id="3">3</option>
-                                  <option value="" id="4">4</option>
-                                  <option value="" id="5">5</option>
-                                  <option value="" id="6">6</option>
-                                  <option value="" id="7">7</option>
-                                  <option value="" id="8">8</option>
-                                  <option value="" id="9">9</option>
-                                  <option value="" id="10">10+</option>
+                                  <option value="1" id="1">1</option>
+                                  <option value="2" id="2">2</option>
+                                  <option value="3" id="3">3</option>
+                                  <option value="4" id="4">4</option>
+                                  <option value="5" id="5">5</option>
+                                  <option value="6" id="6">6</option>
+                                  <option value="7" id="7">7</option>
+                                  <option value="8" id="8">8</option>
+                                  <option value="9" id="9">9</option>
+                                  <option value="10" id="10">10+</option>
                                 </select>
                                 <!-- <input type="text" class="form-control" id="land-size-description" name="land_size_description" style="display: none; margin-top: 10px;" placeholder="eg number of hectares/plot/square meter" required> -->
                               </div>
@@ -342,7 +344,6 @@
                                       <option value="Outside Nigeria">Outside Nigeria</option>
                                     </select>
                                   </div>
-
                                   <div class="form-group col-md-4">
                                     <label for="selectLocal">Locality</label>                               
                                      <select  name="LocalityName" id="selectLocal"  class="form-control">
@@ -367,7 +368,7 @@
                                   <label for="">Denomination</label>
                                   <select  name="denomination" id=""  class="form-control" required>
                                     <option value="" id="">--select--</option>
-                                    <option value="Naira" id="1">Naira</option>
+                                    <option value="NAIRA" id="1">Naira</option>
                                     <option value="Dollars" id="2">Dollars</option>
                                   </select>
                                 </div>

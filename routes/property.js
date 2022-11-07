@@ -6,7 +6,8 @@ const router = express.Router()
 
 
 
-router.post('/addroperty',upload.array('uploadImages',4),controllers.addlandProperty)
+
+router.post('/addroperty',upload.array('uploadImages',4),controllers.addProperty)
 
 
 
