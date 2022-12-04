@@ -38,10 +38,10 @@ exports.registerUser = (req,res)=> {
         //call a big data endpoint to validate a user phone number
      validateMobileNumber(countryCode,phoneNumber,api_key).then(result =>{
           if(result.isValid !== true){validationErrors.push({ msg: 'You have entered an in correct phone number'})}
-
+         
           let msisdn = result.nationalFormat
           let callingCode = result.callingCode
-          let savephoneNumber = Number(msisdn.replace(/\s+/g, ''))
+          let savephoneNumber = msisdn.replace(/\s+/g, '')
 
           //user email and password validation
         if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
@@ -69,10 +69,8 @@ exports.registerUser = (req,res)=> {
                 callingCode : callingCode,
                 displayName : req.body.firstName + ' ' + req.body.middleName,
                 firstName: req.body.firstName,
-                profilePic: '',
                 domainName:domainName,
                 userWebsiteUrl: `https://${domainName}`,
-                passwordResetToken: 'default',
                 lastName: req.body.lastName,
                 email: req.body.email,
                 password: req.body.password

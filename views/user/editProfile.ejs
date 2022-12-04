@@ -32,7 +32,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html " target="_blank">
         <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold">Welcome : <%-user.displayName%> </span>
+        <span class="ms-1 font-weight-bold displayLogo">Welcome : <%-user.displayName%> </span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -69,8 +69,7 @@
            <div class="card mb-4 mt-5">
             <div class="card-body p-4">
                 <div class="row form-div">
-                    
-                          <form action="" id="">
+                          <form action="/updateedted?_method=PUT" method="POST" id="">
                               <!-- profile div starts here -->
                             <div class="profile-div"> 
                               <span>My Profile</span>
@@ -86,16 +85,16 @@
                                   <div id="logoDiv" >
                                     <span>Upload Logo</span>
                                     <div id="editImage" class="form-group col-md-3">
-                                      <input type="file" title="" class="form-control" id="fileupload" name="selfiePicture" style="display: none;" accept="image/*" capture>
-                                      <input type="text" title="" class="form-control" id="uploadtriggered" name="selfiePicture" style="cursor:pointer" readonly>
+                                      <input type="file"  class="form-control" id="fileupload" name="userPicture" style="display: none;" accept="image/*" capture>
+                                      <input type="text" class="form-control" id="uploadtriggered" name="selfiePicture" style="cursor:pointer" readonly>
                                       <%  if(user.profilePic){%>
                                       <label id="logoLabel" for="">
-                                          <img id="logourl"  class="img-fluid img-thumbnail" src="<%- user.profilePic %>" alt="">
+                                          <img  id="logourl"  class="img-fluid img-thumbnail" src="<%- user.profilePic %>" alt="">
                                           Change Logo
                                       </label>
                                       <% }else{%>
-                                        <label for="">
-                                            <!-- <img  class="img-fluid img-thumbnail" src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png" alt=""> -->
+                                        <label for="" id="logoLabel" >
+                                            <img id="logourl" class="img-fluid img-thumbnail" src="" alt="">
                                             upload logo
                                         </label>
                                         <% } %> 
@@ -123,7 +122,7 @@
                                     <div class="row mt-4">
                                         <div class="form-group col-md-4">
                                                 <label class="label" for="countryCode">Country code</label>
-                                                <select  style="width: 100%;height: 30px;" id="countryCode" name="countryCode"  id="countryCode">
+                                                <select  style="width: 100%;height: 30px;" id="countryCode" class="selectOption" name="countryCode"  id="countryCode">
                                                   <option value="" Selected>Country code</option>
                                                   <option data-countryCode="GB" value="44">UK (+44)</option>
                                                   <option data-countryCode="US" value="1">USA (+1)</option>
@@ -345,7 +344,7 @@
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label class="label" for="govt_id">Phone Number(digits only):</label>
-                                                <input type="number" name="phoneNumber" id="phoneNumber" value="<%- user.phoneNumber %>" class="form-control" readonly />
+                                                <input type="text" name="phoneNumber" id="phoneNumber" value="<%- user.phoneNumber%>" class="form-control" readonly />
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label class="label" for="govt_id">Whatsapp Number (Digits only)</label>
@@ -364,7 +363,7 @@
                                     <div class="row mt-4">
                                         <div class="form-group col-md-6">
                                                 <label class="label" for="countryCode" Selected>Office Address State</label>
-                                                <select name="officeStateName" id="officeAddState">
+                                                <select name="officeStateName" id="officeAddState" class="selectOption">
                                                   <option value="" selected="selected">Select Office State</option>
                                                   <option value="Abuja FCT">Abuja FCT</option>
                                                   <option value="Abia">Abia</option>
@@ -408,7 +407,7 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label class="label" for="govt_id">Office LGA</label>
-                                                <select  name="officeLocalGovname" id="officeLocal">
+                                                <select  name="officeLocalGovname" id="officeLocal" class="selectOption">
                                                   <option value="">--Select--</option>
                                                 </select>
                                             </div>
@@ -424,11 +423,11 @@
                                     <span>About your 0rganization</span>
                                     <div class="row mt-4">
                                             <div class="form-group col-md-12">
-                                                <textarea name="aboutYourOrganization" class="form-control" id="aboutYourOrganization" cols="" rows="5">Describe your organization</textarea>
+                                                <textarea name="aboutYourOrganization" class="form-control" id="aboutYourOrganization" cols="" rows="5" placeholder="Describe your organization"></textarea>
                                             </div>
                                             <span id="sericeProvided">Services your organization provides</span>
                                             <div class="form-group col-md-12">
-                                              <textarea name="service" class="form-control" id="organizattionSericeProvided" cols="" rows="5">e.g facility management</textarea>
+                                              <textarea name="organizattionSericeProvided" class="form-control" id="organizattionSericeProvided" cols="" rows="5" placeholder="e.g facility management"></textarea>
                                             </div>
                                       </div>
                                   </div>
@@ -437,7 +436,7 @@
                                     <div class="row mt-4">
                                         <div class="form-group col-md-6">
                                                 <label class="label" for="countryCode" Selected>Business State</label>
-                                                <select name="officeStateName" id="businessState">
+                                                <select name="businessState" id="businessState" class="selectOption">
                                                   <option value="" selected="selected">Select Office State</option>
                                                   <option value="Abuja FCT">Abuja FCT</option>
                                                   <option value="Abia">Abia</option>
@@ -482,13 +481,13 @@
                                             
                                             <div class="form-group col-md-6">
                                                 <label class="label" for="govt_id">Business Axis</label>
-                                                <select  name="officeLocalGovname" id="businessAxis">
+                                                <select  name="businessAxis" id="businessAxis" class="selectOption">
                                                   <option value="">--Select--</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-12 mt-3">
                                                 <label class="label" for="">Business Category</label>
-                                                <select name="busiinessCategory" id="businessCat">
+                                                <select name="busiinessCategory" id="businessCat" class="selectOption">
                                                   <option value="" selected="selected">Select Office State</option>
                                                   <option value="Abia">Estate Surveying Fiirm</option>
                                                   <option value="Adamawa">Individual Agent</option>
@@ -517,9 +516,10 @@
                                       </div>
                                   </div>
                                   <!--about the organizatio section  ends here --> 
-
+                                  <div class="form-group col-md-3 mx-auto">
+                                    <input type="submit" class="btn btn-secondary ml-5 mt-3 btn-lg" id="Instagram" value="submit"/>
+                                </div>
                           </form>    
-                        
                   </div>
                 </div>    
            </div>
@@ -547,16 +547,15 @@ $("#uploadtriggered").click(function (e) {
 
 async function getuploadImageName() {
     let logoURL = document.querySelector('#logourl')
+    let uploadedLogo = document.querySelector('#fileupload').files[0];
     if(logoURL.getAttribute('src')){
-        
-     let uploadedLogo = document.querySelector('#fileupload').files[0];
      logoURL.setAttribute('src','')
      document.getElementById('logoLabel').textContent=uploadedLogo.name
     //  console.log(uploadedLogo)
     }else {
-        let uploadedLogo = document.querySelector('#fileupload').files[0];
         document.getElementById('logoLabel').textContent=uploadedLogo.name
     }
+    
     
 
 

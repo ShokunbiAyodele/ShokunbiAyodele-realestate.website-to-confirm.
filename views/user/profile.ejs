@@ -32,7 +32,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html " target="_blank">
         <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold">Welcome : <%-user.displayName%> </span>
+        <span class="ms-1 font-weight-bold displayLogo">Welcome : <%-user.displayName%> </span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -74,7 +74,7 @@
                     <a href="#">My Team</a>
                 </div>
                 <div class="single-container">
-                    <a href="/editParofile/<%-user._id%>">Edit Profile</a>
+                    <a href="/setting/<%-user._id%>">Edit Profile</a>
                 </div>
            </div>
           <div class="card mb-4 mt-5">
@@ -97,7 +97,7 @@
                 <div class="row">
                    <div class="col-md-12 website clearfix">
                         <h3 id="info" class="title" >Personal Information
-                          <a class="icon-payrent" href="/editParofile/<%- user._id%>">
+                          <a class="icon-payrent" href="/setting/<%- user._id%>">
                             <img id="icon-img" src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" alt="edit-icon">
                           </a>
                         </h3>
@@ -146,21 +146,21 @@
                           </div>
                         <div class="document-div"> 
                           <span>Upload Files</span>
-                          <form action="" id="docForm">
+                          <form id="docForm">
                             <div class="form-group col-md-6">
-                              <label for="govt_id">Govt Issue ID:</label>
+                              <label for="govt_id" id="govt_id">Issue ID:</label>
                               <input type="text" id="clicktoTriger1" class="form-control"  placeholder="click to upload" style="cursor:pointer" readonly/>
                               <input type="file" class="form-control" id="govtIssueId" name="govtId" accept="image/*" style="display:none"/>
                             </div>
                             <div class="form-group col-md-6">
-                              <label for="govt_id">Selfie Picture:</label>
+                              <label for="selfPictture" id="selfPicture">Selfie Picture:</label>
                               <input type="text" id="selfiePictureTrigger" class="form-control"  placeholder="click to upload" style="cursor:pointer" readonly/>
-                              <input type="file" class="form-control" id="selfiePicture" name="selfiePicture" accept="image/*" style="display:none"/>
+                              <input type="file" class="form-control" id="selfie_Picture" name="selfiePic" accept="image/*" style="display:none"/>
                             </div>
                             <div class="form-group col-md-6">
-                              <label for="govt_id">Business CAC Document:</label>
+                              <label for="cacDoc" id="cacDoc">Business CAC Document:</label>
                               <input type="" id="cacDocumentTrigger" class="form-control"  placeholder="click to upload" style="cursor:pointer" readonly/>
-                              <input type="file" class="form-control" id="cacDocument" name="selfiePicture" accept="image/*" style="display:none"/>
+                              <input type="file" class="form-control" id="cacDocument" name="businessCAC" accept="image/*" style="display:none"/>
                             </div>
                           </form>
                         
@@ -246,84 +246,8 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
-    $("#clicktoTriger1").click(function () {
-      $("#govtIssueId").trigger('click');
-});
-   $("#selfiePictureTrigger").click(function () {
-      $("#selfiePicture").trigger('click');
-}); 
-   $("#cacDocumentTrigger").click(function () {
-      $("#cacDocument").trigger('click');
-});
-
-$("#triggerLogo").click(function (e) {
-    $("#userlogo").trigger('click');
-
-    $('#userlogo').change(sendProfilePicture);
-
-async function sendProfilePicture() {
-    $('#logoform').submit();
- 
-    try {
-        const file = document.getElementById('userlogo').files[0];
-        const formData = new formData()
-        formData.append('userLogo', file)
-        const sendFile = await fetch('/update/profilePicture', {
-            method : "POST",
-            body : formData
-        })
-        const response = await sendFile.json()
-        if(response ==="success"){
-            location.reload()
-        }
-        
-    } catch (error) {
-        console.log(error)
-        
-    }
-  }
-});
-
-
-document.getElementById('getUrl').addEventListener('click', function(){
-  const websiteValue =  document.querySelector('#personalUrl').innerText
- let beforePeriodString = websiteValue.substring(0, websiteValue.indexOf('.'))
-  document.querySelector('#websiteurl').value = beforePeriodString
-})
-
-
-
-//send a request to server to update personal url
-let button = document.querySelector('#updateDomain')
-button.addEventListener('click',sendUpdateRequest)
- async function sendUpdateRequest(event){
-  const domain = document.querySelector('#websiteurl')
-   event.preventDefault()
-   
-   //remove space and period character
- let checkUrlDotandSpace =domain.value.replace(/\s+/g, '').split('.').join('').toLowerCase()
-  const update =await fetch('/update/domainName?_method=PUT',{
-      method: 'POST',
-      headers : {'Content-Type': 'Application/json'},
-      body : JSON.stringify({'domainName': checkUrlDotandSpace})
-    })
-    button.value = '..submiting'
-    const res = await update.json()
-    if(res){
-      //create a paragraph
-      let Paragraph = document.createElement('p')
-      Paragraph.style.color= 'green'
-      Paragraph.innerText= 'updated successfully'
-      const successHolder = document.getElementById('successHolder')
-      successHolder.appendChild(Paragraph)
-      const formId = document.querySelector('#formId')
-      const modalId = document.getElementById('modald')
-      formId.insertBefore(modalId,successHolder)
-      button.value = 'submit'
-      location.reload()
-
-    }
-}
+  
+    
   </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -334,7 +258,7 @@ button.addEventListener('click',sendUpdateRequest)
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<!-- <script src="/js1/profile.js"></script> -->
+<script src="/js1/profile.js"></script>
 </body>
 </html>
 

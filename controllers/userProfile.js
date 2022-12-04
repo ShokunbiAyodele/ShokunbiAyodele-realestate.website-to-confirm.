@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const { uuid, validateMobileNumber } = require("../helper/helper");
 const Post = require('../models/Post')
 const uploadToCloudinary = require("../middleware/cloudinary");
 const { response } = require('express');
@@ -62,7 +63,6 @@ exports.updateProfilePicture = async(req,res)=>{
     }
     
 }
-
 exports.updatePersonalURL  = async(req,res)=>{
     try {
         let domainName = req.body.domainName+'.'+ 'nigeriarealtor.com'
@@ -77,5 +77,89 @@ exports.updatePersonalURL  = async(req,res)=>{
     }
 }
 
+exports.uploadGovernmentIssueId  = async(req,res)=>{
+    try {
+        let locaFilePath = req.file.path 
+        var result = await uploadToCloudinary(locaFilePath,'officialDocuments')
+        await User.findByIdAndUpdate({_id : req.user.id},{governmenTDOC : result.secure_url},{
+            new: true,
+            upsert: true
+        })
+        return res.json("updated successful")
+    } catch (error) {
+        console.log(error)
+    }
+}                                                                                                                       
+
+exports.uploadSelfie  = async(req,res)=>{
+    try {
+        let locaFilePath = req.file.path 
+        var result = await uploadToCloudinary(locaFilePath,'officialDocuments')
+        await User.findByIdAndUpdate({_id : req.user.id},{selfiePicture : result.secure_url},{
+            new: true,
+            upsert: true
+        })
+        return res.json("updated successful")
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.uploadBusinesscac  = async(req,res)=>{
+    try {
+        let locaFilePath = req.file.path 
+        var result = await uploadToCloudinary(locaFilePath,'officialDocuments')
+        await User.findByIdAndUpdate({_id : req.user.id},{businessCACDoc : result.secure_url},{
+            new: true,
+            upsert: true
+        })
+        return res.json("updated successful")
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.updateeditedsetting  = async(req,res)=>{
+    try {
+        const validationErrors = []
+        let filePath = ''
+        let phoneNumber = req.body.phone
+        let countryCode = req.body.countryCode
+        const api_key =process.env.number_validate_apikey
+
+        let locaFilePath = req.file.path 
+        if(locaFilePath !== null){
+            filePath = locaFilePath
+            let oldFilepath = req.user.profilePic
+            //call cloduinary destroy session to delete old filepath and insert another one  before you update the mongodb with the sec_url
+            var result = await uploadToCloudinary(filePath,'')
+        }
+        else{
+            filePath = req.user.profilePic
+        }
+
+      
 
 
+        validateMobileNumber(countryCode,phoneNumber,api_key).then(result =>{
+            if(result.isValid !== true){validationErrors.push({ msg: 'You have entered an in correct phone number'})}
+
+            if (validationErrors.length) {
+                req.flash('errors', validationErrors)
+                return res.redirect('../')
+              }
+            
+            let msisdn = result.nationalFormat
+            let callingCode = result.callingCode
+            let savephoneNumber = msisdn.replace(/\s+/g, '')
+
+
+           
+
+
+        })
+        console.log(req.body)
+    } catch (error) {
+        console.log(error)
+    }
+}
