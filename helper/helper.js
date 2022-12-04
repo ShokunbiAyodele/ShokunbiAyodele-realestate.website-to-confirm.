@@ -65,7 +65,6 @@ resetPasswordTemplate : (user, url) => {
   <p>Do something outside today! </p>
   <p>–Your friends at Backwoods</p>
   `
-
   return { from, to, subject, html }
 },
   
