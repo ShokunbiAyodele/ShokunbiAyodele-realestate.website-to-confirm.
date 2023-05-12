@@ -3,6 +3,7 @@
     <%- include('./partials/_header') %>
   <body>
         <%- include('./partials/_nav') %>
+        
         <% if (locals.messages.success) { %>
           <% messages.success.forEach( el => { %>
               <div class="alert alert-success"><%= el.msg %></div>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+
+    <%- include('../partials/_header') %>
+  <body>
+    <%- include('../partials/_nav')%>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm col-md-12 col-lg ftco-animate fadeInUp ftco-animated">
+              <div class="properties" style="padding: 10px;">
+                <div class="row">
+                  <% for (var i = 0; i < imageUrl.length; i++) { %>
+                  <div onclick="enlargeImage(this)" class="col-md-4" style="padding-top: 10px; cursor: pointer;">
+                      <img width="100%" src="<%-imageUrl[i] %>" class="img img-2 d-flex justify-content-center align-items-center"/>
+                  </div>
+                  <% } %>
+                </div>
+                <div class="text p-3">
+                  <div class="d-flex">
+                    <div class="one">
+                      <span class=""><%-post.purpose%></span>
+                      <h3><%-post.subType%></h3>
+                      <p><%-post.title%></p>
+                      <!-- <span class="">Location :<%-post.LocalityName%> <%-post.stateName%> </span> -->
+                      <div class="two pl-0">
+                        <span class="price"><%-post.price%></span>
+                      </div>
+                      <p><%-post.description%></p>
+
+                      <div>
+                        <span class="btn btn-outline-success">No of Bathrooms : <%- post.numberOfBathrooms%></span>
+                        <span class="btn btn-outline-success">No of Bedroom : <%- post.numberOfBedrooms%></span>
+                        <span class="btn btn-outline-success">No of Bedroom : <%- post.numberOfBedrooms%></span>
+                        <span class="btn btn-outline-success">No of Toilets : <%- post.numberOfToilets%></span>
+                      </div>
+                      <div class="card text-white bg-secondary mb-3" style="max-width: 18rem; margin-top: 10px;">
+                        <div class="card-header">Payment method</div>
+                        <div class="card-body">
+                          <p>Initial Amount :  <%-post.initialAmount ? post.initialAmount: 'N/A'%></p>
+                          <p>Monthly Payment :  <%-post.monthlyPayment ? post.monthlyPayment: 'N/A'%></p>
+                          <p>Period Of Payment :  <%-post.periodOfPayment ? post.periodOfPayment: 'N/A'%></p>
+                          <hr>
+                          <h6>Social media</h6>
+                          <a href="<%-post.youtube_video_link ? post.youtube_video_link : '#'%>" target="_blank"><i class="fa fa-instagram"></i> <span></span>Youtube</a> 
+                          <a href="<%-post.instagram_video_link ? post.instagram_video_link : '#'%>" target="_blank"><i class="fa fa-youtube-play"></i> <span></span>Instagram</a> 
+                        </div>
+                      </div>
+                    
+                    </div>
+                    <!-- <div class="two">
+                      <span class="price">$20,000</span>
+                    </div> -->
+                  </div>
+                  <% if(typeof user != 'undefined' && post.user !=user.id){ %>
+                  <p class="bottom-area d-flex">
+                    <a class="bt btn-secondary btn-lg" style="margin-right: 20px;"><span class="text-white"><i class="fa fa-thumbs-up"  style="margin-bottom:10px;" aria-hidden="true"></i> <%-post.likes%></span></a>
+                    <a class="btn btn-secondary btn-lg" style="margin-right: 20px;"><span class="text-white"><i class="fa fa-phone"></i> Call the Agent</span></a>
+                    <a class="btn btn-secondary btn-lg" href="/initiateMessage/<%-post.user%>"><span class="text-white"><i class="fa fa-comment"></i> Chat the Agent</span></a>
+                  </p>
+                  <% } else if(typeof user === 'undefined'){%>
+                    <p class="bottom-area d-flex">
+                      <a class="bt btn-secondary btn-lg" style="margin-right: 20px;"><span class="text-white"><i class="fa fa-thumbs-up"  style="margin-bottom:10px;" aria-hidden="true"></i> <%-post.likes%></span></a>
+                      <a class="btn btn-secondary btn-lg" style="margin-right: 20px;"><span class="text-white"><i class="fa fa-phone"></i> Call the Agent</span></a>
+                      <a class="btn btn-secondary btn-lg" href="/initiateMessage/<%-post.user%>"><span class="text-white"><i class="fa fa-comment"></i> Chat the Agent</span></a>
+                    </p>
+                    <% } %>
+                </div>
+              </div>
+            </div>      
+          </div>
+        </div>
+                  <!-- Creates the bootstrap modal where the image will appear -->
+          <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+                <div class="modal-body">
+                  <img src="" id="imagepreview" style="width: 700px; height: 400px;" >
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        <%- include('../partials/_footer') %>
+
+        <script type="text/javascript">
+          function enlargeImage(div){
+            $('#imagepreview').attr('src', $(div).children('img').attr('src')); // here asign the image to the modal when the user click the enlarge link
+          $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+          }
+        </script>
+  </body>
+</html>

@@ -5,7 +5,14 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  PostId: {
+    type: String,
+    required: true,
+  },
   image_url: {
+    type: [],
+  },
+  image_publicIds: {
     type: [],
   },
   purpose: {

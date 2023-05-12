@@ -1810,36 +1810,5 @@ let installment  = document.getElementById('installment');
   }
 })
 
-      // function displayLandType(e){
-      //     if(e.target.value){
-      //         document.getElementById('land-type-description').style.display = 'block'
-      //     }
-      // }
-  
-      // function displayPaymentMethod(e){
-      //     if(e.target.value === 'rent'){
-      //         document.getElementById('rent_payment_method').style.display = 'block'
-      //         document.getElementById('lease_payment_method').style.display = 'none'
-      //         document.getElementById('rent_payment_method').setAttribute('required',"")
-      //     }
-      //     else if(e.target.value === 'lease'){
-      //       document.getElementById('lease_payment_method').style.display = 'block'
-      //       document.getElementById('rent_payment_method').style.display = 'none'
-  
-      //       document.getElementById('lease_payment_method').addEventListener('change',checkOther)
-      //     }
-      //     else{
-      //       document.getElementById('rent_payment_method').style.display = 'none'
-      //       document.getElementById('lease_payment_method').style.display = 'none'
-      //     }
-      // }
-  
-      // function checkOther(e){
-      //   if(e.target.value == 'other'){
-      //     document.getElementById('other_pament_method').style.display = 'block'
-      //   }
-      //   else{
-      //     document.getElementById('other_pament_method').style.display = 'none'
-      //   }
-      // }
+
      

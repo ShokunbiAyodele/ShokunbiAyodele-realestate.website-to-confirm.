@@ -1,6 +1,7 @@
 const fetch = require('node-fetch')
 const nodemailer = require('nodemailer')
 const jwt = require('jsonwebtoken')
+const cloudinary = require('cloudinary').v2;
 
 module.exports  = {
     uuid : ()  => {
@@ -38,7 +39,7 @@ module.exports  = {
 //transporter to send a reset password mail to user
  transporter : nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port : process.env.PORT || 3000,
+  port : process.env.SMTP_PORT || 3000,
   auth: {
     user: process.env.EMAIL_LOGIN,
     pass: process.env.EMAIL_PASSWORD
@@ -58,7 +59,7 @@ resetPasswordTemplate : (user, url) => {
   const subject = "🌻Account Password Reset 🌻"
   const html = `
   <p>Hey ${user.displayName || user.email},</p>
-  <p>We recieve a rewuest that you want to change your password!</p>
+  <p>We recieve a request that you want to change your password!</p>
   <p>But don’t worry! You can use the following link to reset your password:</p>
   <a href=${url}>${url}</a>
   <p>If you don’t use this link within 1 hour, it will expire.</p>
@@ -67,5 +68,9 @@ resetPasswordTemplate : (user, url) => {
   `
   return { from, to, subject, html }
 },
+
+DeleteImageCloudinary : (publicId)=> {
+  return cloudinary.uploader.destroy(publicId)
+}
   
 }

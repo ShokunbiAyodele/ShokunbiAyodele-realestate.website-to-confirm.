@@ -1,5 +1,8 @@
 const uploadToCloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
+const { uuid } = require("../helper/helper");
+
+// const crypto = require("crypto");
 
 
 
@@ -7,15 +10,18 @@ module.exports = {
   addProperty: async (req, res) => {
 try {
 
-    var imageUrlList = []
+    let imageUrlList = []
+    let imagePublicIdList = []
     for(var i=0;i<req.files.length;i++){
       var locaFilePath = req.files[i].path
       var result = await uploadToCloudinary(locaFilePath,'post_urls')
-    //   console.log(result.secure_url)
+      console.log(result.public_id)
       imageUrlList.push(result.secure_url)
+      imagePublicIdList.push(result.public_id)
     }
 
     let size = ''
+    const PostId = uuid()
     let selectAreaName = ''
     let PropertyPrice = 0
     let initialAmount = ''
@@ -49,7 +55,9 @@ try {
     
     await Post.create({
         title: req.body.title,
+        PostId: PostId,
         image_url: imageUrlList,
+        image_publicIds:imagePublicIdList,
         purpose: req.body.purpose,
         propertyType: req.body.propertyType,
         subType: req.body.subType,
@@ -76,12 +84,11 @@ try {
         user: req.user.id,
       });
       console.log("Post has been added!");
-      req.flash('errors', {msg :"Adds has been created successfully"})
+      req.flash('success', {msg :"Adds has been created successfully"})
       res.redirect("/userDashboard/"+ req.user.id);
-      }catch (error) {
+       }catch (error) {
     console.log(error)
 
-}
-} 
-
+       }
+    },
 }

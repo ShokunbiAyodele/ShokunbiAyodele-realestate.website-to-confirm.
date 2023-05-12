@@ -49,3 +49,23 @@
           <!-- <script type="text/javascript" src="js/app.js"></script> -->
 </body>
 </html>
+
+
+
+<div class="mt-4 page-heading">
+  <div id="chatMessage-div">
+    <% for(let i = 0; i< dataResponse.length; i++){%>
+    <div class="parent-div <%- dataResponse[i].sender == userProfile._id ? 'own' : 'message'%>">
+      <p id="messages"><%=dataResponse[i].text %></p>
+      <span id="dateCreated"><%=format(dataResponse[i].createdAt)%></span>
+    </div>
+    <div id="conversationId" data-id="<%=dataResponse[i].conversationId%>"></div>
+    <div id="senderId" data-id="<%=dataResponse[i].sender%>"></div>
+    <div id="userId" data-id="<%=userProfile._id%>"></div>
+    <% } %>
+ </div>  
+ <div id="form-div">
+    <textarea id="text" placeholder="enter your message..."></textarea>   
+    <button type="submit" id="sendId">Send</button>
+ </div> 
+</div> 

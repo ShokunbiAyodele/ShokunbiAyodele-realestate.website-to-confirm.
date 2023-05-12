@@ -9,6 +9,4 @@ const router = express.Router()
 
 router.post('/addroperty',upload.array('uploadImages',4),controllers.addProperty)
 
-
-
 module.exports = router;

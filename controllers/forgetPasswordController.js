@@ -30,14 +30,13 @@ exports.sendPasswordResetEmail = async (req, res) => {
     const url = getPasswordResetURL(user,token)
     // res.json({message : url})
     const emailTemplate = resetPasswordTemplate(user, url)
-
     const sendEmail = () => {
-      transporter.sendMail(emailTemplate, (err, info) => {
+      transporter.sendMail(emailTemplate, (err,info) => {
         if (err) {
             req.flash('errors', {msg : `error sending mail ${err}`})
         }
         req.flash('success', {msg : "please check your mail for reset password link"})
-        console.log(`** Email sent **`)
+        console.log(`** Email sent: ${info.response}`)
       })
     }
     sendEmail()
@@ -80,8 +79,6 @@ exports.sendPasswordResetEmail = async (req, res) => {
     .catch(() => {
       res.status(404).json("Invalid user")
     })
-
-
   }
 
 

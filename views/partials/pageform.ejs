@@ -1,0 +1,48 @@
+<section class="ftco-section-parallax">
+    <div class="parallax-img d-flex align-items-center">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-7 text-center heading-section heading-section-white ftco-animate" id="parent">
+            <h2>Subcribe to our Newsletter</h2>
+            <p>Your want to be receiving our new listing on your mail?, enter your email address and click subscribe </p>
+            <div id="sibling_div" class="row d-flex justify-content-center mt-5">
+              <div class="col-md-8">
+                <form action="#" class="subscribe-form">
+                  <div class="form-group d-flex">
+                    <input type="email" id="newsEmail" class="form-control placeholder:bg-white" placeholder="Enter email address">
+                    <button type="button" id="subscribe"  class="submit px-3" style="background: black; border: none;">Subscribe</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script type="text/javascript">
+  
+   const subSrbButton = document.querySelector('#subscribe')
+   subSrbButton.addEventListener('click', subScribe)
+  
+   async function subScribe(){
+    const email = document.getElementById('newsEmail').value
+    const subNotification = await fetch('/subtonewsletter',{
+      method : 'POST',
+      headers : {'Content-Type' : 'Application/json'},
+      body : JSON.stringify({email})
+    })
+    const ressub =await subNotification.json()
+    if(ressub.msg){
+      const parentDiv = document.getElementById('parent')
+      const sibling_div = document.getElementById('sibling_div')
+      //create element
+      const p = document.createElement('p')
+      p.style.color = 'green'
+      const text = document.createTextNode(ressub.msg)
+      p.appendChild(text)
+      parentDiv.insertBefore(p,sibling_div)
+    }
+   }
+  </script>

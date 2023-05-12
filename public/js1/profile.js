@@ -73,7 +73,6 @@ const update =await fetch('/update/domainName?_method=PUT',{
     formId.insertBefore(modalId,successHolder)
     button.value = 'submit'
     location.reload()
-
   }
 }
 

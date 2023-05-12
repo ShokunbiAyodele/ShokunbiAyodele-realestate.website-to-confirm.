@@ -26973,7 +26973,182 @@ div .label{
 
 }
 
-/* #logoform, .user-image{
-  display: block;
-  text-align: justify;
+li.nav-list{
+  padding: 0 0 20px 0;
+
+}
+
+.text .price{
+  padding-right: 20px;
+}
+
+.userId{
+  display: inline-block;
+  margin: auto;
+}
+
+#messageDiv{
+  margin-top: 40px;
+}
+
+.outside {
+	position: relative;
+    width: 200px;
+    height: 200px;
+}
+.inside {
+    position: absolute;
+    bottom: 2px;
+    width: 100%;
+}
+
+#left-element{
+  margin-left: auto; 
+  margin-right: 0;
+  }
+
+
+
+
+
+
+
+  .chat-form{
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+    align-items: flex-end;
+    margin-top: 20px;
+  }
+
+  .chat-form > textarea{
+    flex: 90%;
+    margin:  10px 0px;
+    border: 0px;
+    
+  }
+  .chat-form > button{
+    flex: 10%;
+    margin: 10px 0px;
+    padding: 15px;
+    border: 0px;
+
+  }
+
+  .clearfix {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+#message-div{
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 500px;
+}
+
+
+.own {
+  float: right;
+  font-size: 8px;
+  background: wheat;
+  font-family: Roboto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 2px;
+}
+.message{
+  float: left;
+  font-size: 8px;
+  background: white;
+  font-family: Roboto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 2px;  
+}
+
+#messages,#dateCreated{
+  margin: 3px;
+}
+
+.container,#input-container{
+  width: 100%;
+  margin: auto;
+  margin: 10px;
+
+}
+
+#messages-container{
+  background-color: darkgray;
+  margin-top: 50px;
+  height: 500px;
+  width: 100%;
+  padding: 20px;
+  border: 0px;
+  border-radius: 20px;
+  overflow: scroll;
+}
+#input-container{
+  position: fixed;
+  bottom: 0px;
+  border: 2px solid whitesmoke ;
+  width: 76%;
+  padding-top: 20px;
+}
+
+#sendId{
+  padding: 10px;
+  margin-bottom: 5px;
+  transform: translateY(-20px);
+  font-size: medium;
+  border: 0px;
+
+} 
+
+#text{
+  margin: 0px;
+  font-size: medium;
+  border: 0px;
+  width: 92%;
+  padding-left: 35px;
+  padding-top: 35px;
+  outline: none !important;
+}
+
+/* textarea::placeholder{
+  padding: 30px;
 } */
+
+/* #input-container > button{
+  border: 0px;
+  align-items: flex-end;
+} */
+
+#post-container{
+  display: flex;
+  flex-direction: row;
+}
+#post-container > img{
+  width: 80px;
+  margin-right: 10px;
+}
+#post-container > span{
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+span.barge{
+  width: 25px;
+  background-color:red;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 3px;
+  color: white;
+  transform:translateY(-15px)
+}
+
+.dashbaord-link a {
+  font-size : 10px
+}
+

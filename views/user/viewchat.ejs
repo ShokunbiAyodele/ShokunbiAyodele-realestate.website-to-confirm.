@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/_admin_css') %>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<body class="g-sidenav-show bg-gray-100">
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+        <div class="sidenav-header">
+          <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+          <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html " target="_blank">
+            <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+            <span class="ms-1 font-weight-bold displayLogo">Website Logo stay here</span>
+          </a>
+        </div>
+        <% if (locals.messages.errors) { %>
+          <% messages.errors.forEach( el => { %>
+              <div style="color: green;" class=""><%= el.msg %></div>
+          <% }) %>    
+      <% } %>
+        <hr class="horizontal dark mt-0">
+        <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link  " href="/userDashboard/<%-userProfile._id%>">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+                    <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z"/>
+                  </svg>
+                </div>
+                <span class="nav-link-text ms-1"> Dashboard</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+  <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+    <div class="container-fluid">
+      <div class="page-header min-height-300 border-radius-xl mt-4" style="background-color:grey">
+      <div class="container-fluid py-4">
+        <div class="row ml-4">
+
+                 <div class="col-md-12">
+                    <div class="card mb-4">
+                        <div class="card-header pb-0">
+                          <h6>Inbox Messages</h6>
+                        </div>
+                        <div class="card-body px-0 pt-0 pb-2">
+                          <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                              <thead>
+                                <tr>
+                                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">User</th>
+                                  <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Title</th> -->
+                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Message</th>
+                                  <th class="text-secondary opacity-7"></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <div  id="userId" data-id="<%-userProfile._id%>"></div>
+                                <% for(let i = 0; i< dataResponse.length; i++){%>
+                                  <% for (let userId of dataResponse[i].members){%>
+                                   <% if(userId != userProfile._id){ %>  
+                                <tr>
+                                  <td>
+                                    <div class="friendId" hidden><%=userId%></div>                         
+                                    <div class="d-flex px-2 py-1">
+                                      <div>
+                                        <img src="" class="avatar avatar-sm me-3" alt="user1">
+                                      </div>
+                                      <div class="userProfile d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm"></h6>
+                                        <p class="text-xs text-secondary mb-0"></p>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <!-- <td>
+                                    <p class="text-xs font-weight-bold mb-0">Manager</p>
+                                    <p class="text-xs text-secondary mb-0">Organization</p>
+                                  </td> -->
+                                  <p class="text-xs text-secondary mb-0 senderId d-none"></p>
+                                  <p class="text-xs text-secondary mb-0 chatId d-none"></p>
+                                  <td class="align-middle text-center text-sm">
+                                    <span class="badge badge-sm bg-gradient-success">Online</span>
+                                  </td>
+                                  <td class="align-middle text-center">
+                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                  </td>
+                                  <td class="align-middle">
+                                    <!-- <a href="/replyUserMessage" class="btn-secondary btn-lg font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> -->
+                                      <a href="/currentChat?postId=<%=dataResponse[i].postId%>&userId=<%=userId%>" class="btn-secondary btn-lg font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                      Reply
+                                    </a>
+                                  </td>                  
+                                </tr>
+                                <% }%>
+                                <% }%>
+                                <% }%>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                 </div>
+             </div>
+    </div>
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  
+    
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- <script src="/js1/profile.js"></script> -->
+<script>
+
+const getUserProfile = (user) => {
+  const div = document.querySelector('.userProfile')
+  console.log(div)
+  div.childNodes[0].textContent = user.displayName
+  div.childNodes[1].textContent = user.email
+  div.previousElementSibling.childNodes[1].src =user.profilePic
+
+}
+    const friend= document.querySelectorAll('.friendId')
+    friend.forEach(Element => {
+      getFriend(Element.textContent)
+    })
+
+    async function getFriend(friendId){
+      const res = await fetch('http://localhost:3000/users/user?friendId='+ friendId)
+      const response =await res.json()
+      getUserProfile(response.getUser)
+    }
+</script>
+</body>
+</html>
+
+

@@ -7,6 +7,7 @@ const connectDB = async () => {
             useUnifiedTopology : true,
 
         })
+        // await mongoose.model('User').findOne(); // Works!
         console.log(`MongoDB is connected ${conn.connection.host}`)
     } catch (error) {
         console.log(error)
@@ -14,5 +15,6 @@ const connectDB = async () => {
         
     }
 }
+
 
 module.exports = connectDB

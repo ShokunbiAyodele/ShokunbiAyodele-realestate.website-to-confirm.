@@ -6,7 +6,7 @@ const router = express.Router()
 
 
 
-router.get('/userDashboard/:id',ensureAuth,controllers.userPofile)
+router.get('/userDashboard/:id',ensureAuth,controllers.userProfile)
 router.get('/addpost/:id',ensureAuth,controllers.addpost)
 router.get('/currentProfile/:id',ensureAuth,controllers.getUserProfile)
 router.put('/update/profilePicture/:id',ensureAuth,upload.single("userLogo"),controllers.updateProfilePicture)
@@ -15,7 +15,7 @@ router.put('/update/domainName',ensureAuth,controllers.updatePersonalURL)
 router.put('/governmentDoc',ensureAuth,upload.single('govtId'),controllers.uploadGovernmentIssueId)
 router.put('/uploadselfie',ensureAuth,upload.single('selfiePic'),controllers.uploadSelfie)
 router.put('/uploadBusinesscac',ensureAuth,upload.single('businessCAC'),controllers.uploadBusinesscac)
-router.put('/updateedted',ensureAuth,upload.single('userPicture'),controllers.updateeditedsetting)
+router.put('/updateedited',ensureAuth,upload.single('userPicture'),controllers.updateEditedSetting)
 
 
 module.exports = router;
